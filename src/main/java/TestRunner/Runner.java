@@ -10,8 +10,9 @@ import cucumber.api.junit.Cucumber;
 		features="D:\\Automation\\BDDFramework\\src\\main\\java\\Features\\login.feature"
 		,glue= {"StepDefinitions"},
 		format={"pretty","html:test-output"},
-		dryRun=false
-		//strict=true
+		monochrome=true,
+		dryRun=false,
+		strict=true
 		
 		
 		
