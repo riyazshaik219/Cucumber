@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features="D:\\Automation\\BDDFramework\\src\\main\\java\\Features\\deals.feature"
+		features="D:\\Automation\\BDDFramework\\src\\main\\java\\Features\\dealsmap.feature"
 		,glue= {"StepDefinitions"},
 		format={"pretty","html:test-output"},
 		monochrome=true,

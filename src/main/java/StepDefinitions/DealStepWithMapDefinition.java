@@ -1,17 +1,21 @@
 package StepDefinitions;
 
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import junit.framework.Assert;
 
-public class DealsDefinition {
+public class DealStepWithMapDefinition {
 
-	/*WebDriver driver;
+	
+	WebDriver driver;
 
 	@Given("^User is already on login page$")
 	public void user_is_already_on_login_page()  {
@@ -31,12 +35,14 @@ public class DealsDefinition {
 	    
 	}
 
-	@Then("^User enters \"(.*)\" and \"(.*)\"$")
-	public void user_enters_username_and_password(String username,String password)  {
+	@Then("^User enters username and password$")
+	public void user_enters_username_and_password(DataTable credentials)  {
 		
-		driver.findElement(By.name("email")).sendKeys(username);
-		driver.findElement(By.name("password")).sendKeys(password);
+		for(Map<String,String> data:credentials.asMaps(String.class, String.class)) {
+		driver.findElement(By.name("email")).sendKeys(data.get("username"));
+		driver.findElement(By.name("password")).sendKeys(data.get("password"));
 	    
+	}
 	}
 
 	@Then("^User clicks on login button$")
@@ -71,20 +77,33 @@ public class DealsDefinition {
 	    
 	}
 
-	@Then("^User places the deal details \"([^\"]*)\" and \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void user_places_the_deal_details_and_and(String Title, String description, String probability)  {
+	@Then("^User places the deal details$")
+	public void user_places_the_deal_details(DataTable dealData) throws InterruptedException  {
 		
-		driver.findElement(By.name("title")).sendKeys(Title);
-		driver.findElement(By.xpath("//textarea[@name='description']")).sendKeys(description);
-		driver.findElement(By.xpath("//input[@name='probability']")).sendKeys(probability);
+	for(Map<String,String>	dealValues:dealData.asMaps(String.class, String.class)) {
+		
+		driver.findElement(By.name("title")).sendKeys(dealValues.get("title"));
+		driver.findElement(By.xpath("//textarea[@name='description']")).sendKeys(dealValues.get("description"));
+		driver.findElement(By.xpath("//input[@name='probability']")).sendKeys(dealValues.get("probability"));
+		driver.findElement(By.xpath("//button[@class='ui linkedin button']")).click();//it saves the deals
+		
+		//Again goes back to create new deal
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector("#main-nav>a:nth-child(5)")).click();
+		
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("\r\n" + 
+				"//button[contains(text(),'New')]")).click();
+	    
+	}
 	    
 	}
 
-	@Then("^User saves the deal$")
-	public void user_saves_the_deal()  {
+	@Then("^User quits the browser$")
+	public void user_quits_the_browser()  {
 	    
-		driver.findElement(By.xpath("//button[@class='ui linkedin button']")).click();
+		driver.quit();
 	}
 
-*/
+
 }
