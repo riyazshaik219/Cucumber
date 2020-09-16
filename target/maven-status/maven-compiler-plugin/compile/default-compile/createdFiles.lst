@@ -1,0 +1,4 @@
+TestRunner\Runner.class
+StepDefinitions\DealStepWithMapDefinition.class
+StepDefinitions\DealsDefinition.class
+StepDefinitions\taggingSteps.class
